@@ -1,0 +1,91 @@
+var DataEKYC = (function() {
+  const VNPT_CDN = "https://ekyc-web.vnpt.vn";
+  const BACKEND_URL = "https://sandbox-idg.vnpt.vn/";
+  var initObj = {
+    VERSION: "3.0",
+    BASE_CDN: VNPT_CDN,
+    BACKEND_URL: BACKEND_URL,
+    TOKEN_KEY: "MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJvor7zGNvG4qe+1GcaEHFMyJkQBn1p46JnsTPT8/gRETHztd4i6EOXKN4kkX9EnQTI/pUjjwGUOm7iwZFT68ocCAwEAAQ==",
+    TOKEN_ID: "c3eae1e5-7062-60b8-e053-6c1b9f0abcc2",
+    AUTHORIZION: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNDM5MGVmMC1hMGVkLTExZWItYThkNS04YjQ1ZTA5MmZiMjMiLCJhdWQiOlsicmVzdHNlcnZpY2UiXSwidXNlcl9uYW1lIjoibmttaW5oQHZucHQudm4iLCJzY29wZSI6WyJyZWFkIl0sImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0IiwibmFtZSI6Im5rbWluaEB2bnB0LnZuIiwiZXhwIjoxNjg4MDk2NjM0LCJ1dWlkX2FjY291bnQiOiJlNDM5MGVmMC1hMGVkLTExZWItYThkNS04YjQ1ZTA5MmZiMjMiLCJhdXRob3JpdGllcyI6WyJVU0VSIl0sImp0aSI6ImMyNWViODc1LTg1YTItNDYzNC05NjRhLTk2ZmMzYWJiMDE0NiIsImNsaWVudF9pZCI6ImNsaWVudGFwcCJ9.kHa8I9IJIj0k1U8EumwQ48VNkgimcHkcMbYOwWUqMfr46-DdTcNff-6Ahc69ivFbHKBHbjMeati1dk404nxaggn_f0Z011eMtaqldBOJ8SLIB8Zx6KI50QTURqsYE7q3y9i03_gfCI_wRBgOjE2YeqPjakBDkPJBnWqtI9-WUE2RbMzc1dlDtI4aB_tZtwss3h5WCEKoPIfdi7NC3UC3ZuJ5XayAmMN5k-LvHLZeA3WCsdYO7530CWKpLRDlSfsPIcG1__OqzA2hkWmou6Wgx8wzcK4xCkPW5br8l7_eQcVG7DFO76M8S2oh_1oCkkFDsNY39XfdCTO2MaMcwbbesw",
+    PARRENT_ID: "ekyc_sdk_intergrated",
+    FLOW_TYPE: "FACE", // DOCUMENT, FACE
+    SHOW_HELP: true,
+    SHOW_TRADEMARK: false,
+    CHECK_LIVENESS_CARD: true,
+    CHECK_LIVENESS_FACE: true,
+    CHECK_MASKED_FACE: true,
+    COMPARE_FACE: false,
+    LANGUAGE: "vi",
+    LIST_ITEM: [-1, 5, 6, 7, 9],
+    TYPE_DOCUMENT: -1,
+    ADVANCE_LIVENESS_FACE: true,
+    ASYNC_LOAD_AI: false,
+    LIST_CHOOSE_STYLE: {
+      text_color: "white",
+      item_active_color: "#18D696",
+      background_icon: "#18D696",
+      id_icon: VNPT_CDN + "/images/si/id_card.svg",
+      passport_icon: VNPT_CDN + "/images/si/passport.svg",
+      drivecard_icon: VNPT_CDN + "/images/si/drivecard.svg",
+      army_id_icon: VNPT_CDN + "/images/si/other_doc.svg",
+      id_chip_icon: VNPT_CDN + "/images/si/id_chip.svg",
+      start_button_background: "#18D696",
+      start_button_color: "#111127",
+    },
+    CAPTURE_IMAGE_STYLE: {
+      big_title_color: "white",
+      description1_color: "white",
+      capture_btn_background: "#18D696",
+      capture_btn_color: "#000000",
+      capture_btn_icon: VNPT_CDN + "/images/hdbank2/capture.svg",
+      tutorial_btn_icon: VNPT_CDN + "/images/hdbank/help.gif",
+      upload_btn_background: "white",
+      upload_btn_color: "#000000",
+      upload_btn_boder: "2px solid #18d696",
+      upload_btn_icon: VNPT_CDN + "/images/altiss/upload.svg",
+      recapture_btn_background: "#18D696",
+      recapture_btn_color: "#fff",
+      recapture_btn_border: "2px solid #18D696",
+      recapture_btn_icon: VNPT_CDN + "/images/hdbank2/capture.svg",
+      nextstep_btn_background: "#18D696",
+      nextstep_btn_color: "black",
+      nextstep_btn_icon: VNPT_CDN + "/images/hdbank2/next_icon.svg",
+      capture_and_upload_wrapper_bg: "rgba(23, 24, 28, 0.7);",
+      capture_and_upload_wrapper_bg_img: "./images/4_goc_anh.png",
+    },
+    MODAL_DOC_STYLE: {
+      front_id_icon: "./images/cmt_front.svg",
+      back_id_icon: "./images/cmt_back.svg",
+      touch_icon: VNPT_CDN + "/altiss/touch_cmt.svg",
+      close_icon: VNPT_CDN + "/altiss/close_icon.svg",
+      notice1_icon: VNPT_CDN + "/altiss/cmt_notice1.svg",
+      notice2_icon: VNPT_CDN + "/altiss/cmt_notice2.svg",
+      notice3_icon: VNPT_CDN + "/altiss/cmt_notice3.svg",
+    },
+    MODAL_FACE_STYLE: {
+      face_icon: VNPT_CDN + "/altiss/face_icon.svg",
+      close_icon: VNPT_CDN + "/altiss/close_icon.svg",
+      notice1_icon: VNPT_CDN + "/altiss/cmt_notice1.svg",
+      notice2_icon: VNPT_CDN + "/altiss/cmt_notice2.svg",
+      notice3_icon: VNPT_CDN + "/altiss/cmt_notice3.svg",
+    },
+    OTHER_CONFIG: {
+      loading_icon: VNPT_CDN + "/images/hdbank2/loading.gif",
+      loading_styles: "background-color: #000000; opacity: 0.7",
+      oval_web: VNPT_CDN + "/animation/web_oval.json",
+      oval_mobile: "https://cdn.jsdelivr.net/gh/eminel9311/asset-compress@master/mobile_border.json",
+      notice_ani: VNPT_CDN + "/animation/caution.json",
+      oval_title_color: "white",
+      description_oval_content:
+        "Vui lòng tháo kính để xác thực chính xác hơn!",
+      description_oval:
+        "text-align: center; color: white; font-weight: bold",
+      video_tutorial_oval:
+        "https://cdn.jsdelivr.net/gh/eminel9311/asset-compress@master/video_tutorial_oval_dark.mp4",
+      // video_tutorial_oval:
+      //   VNPT_CDN + "/animation/video_tutorial_oval_dark.mp4",
+    },
+  };
+  return initObj;
+})();
