@@ -74,7 +74,7 @@ var DataEKYC = (function() {
       loading_icon: VNPT_CDN + "/images/hdbank2/loading.gif",
       loading_styles: "background-color: #000000; opacity: 0.7",
       oval_web: VNPT_CDN + "/animation/web_oval.json",
-      oval_mobile: "https://github.com/eminel9311/asset-compress/blob/master/mobile_border2.json",
+      oval_mobile: "https://cdn.jsdelivr.net/gh/eminel9311/asset-compress@master/mobile_border.json",
       notice_ani: VNPT_CDN + "/animation/caution.json",
       oval_title_color: "white",
       description_oval_content:
